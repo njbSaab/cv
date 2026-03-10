@@ -1,0 +1,207 @@
+export const JOBS = [
+  {
+    id: 'job1',
+    title: 'Fullstack Engineer',
+    period: 'Mar 2024 — Present',
+    company: 'Media Marketing Agency',
+    companyUrl: null,
+    sub: 'AdTech / MarTech · 1400+ employees · team of 27 · Full-time remote',
+    tags: [
+      { label: 'Angular',     type: 'hot' },
+      { label: 'NestJS',      type: 'hot' },
+      { label: 'CQRS',        type: 'hot' },
+      { label: 'Vue 3',       type: 'mid' },
+      { label: 'React',       type: 'react' },
+      { label: 'PostgreSQL',  type: 'mid' },
+      { label: 'Telegraf.js', type: 'mid' },
+      { label: 'Python',      type: ''    },
+      { label: 'Docker',      type: ''    },
+    ],
+    bullets: [
+      'Built SPA/PWA platforms (Angular + Vue) with NestJS backend (OOP + Clean Architecture, CQRS) and PostgreSQL/MySQL — from scratch to production deploy',
+      'Telegram bots and Mini Apps with admin panels; workflow automation and analytics pipeline',
+      'Registration/verification orchestrators across multiple servers and providers (betting APIs, FingerprintJS)',
+      'Email systems: single sends, delayed chains, dynamic templates, multi-tenant (Brevo / SMTP)',
+      'Integrated Google Analytics, GTM, Meta API, TikTok API, Keitaro into microservice architecture',
+      'VPS/VDS administration: Nginx, Docker, PM2, SSL, Cloudflare — configured from scratch',
+    ],
+    detail: {
+      sections: [
+        {
+          icon: '🧩',
+          label: 'Full-Stack Web Development',
+          items: [
+            'Angular SPAs with OOP + FSD (Feature-Sliced Design) — from architecture to production deploy',
+            'NestJS backend: OOP + Clean Architecture, CQRS, DDD elements. Layers: controllers → use-cases → repositories → domain entities',
+            'Full cycle: dynamic frontend UI → secure NestJS backend → admin panels → relational databases (PostgreSQL, MySQL)',
+            'High-load web platforms and client-facing tools: responsiveness, stability, user engagement',
+            'Vue 3 + Pinia for lighter SPAs where NgRx overhead is not justified',
+          ],
+        },
+        {
+          icon: '🤖',
+          label: 'Telegram Bots & Mini Apps',
+          items: [
+            'Telegram bots with Telegraf.js: real-time interaction, inline keyboards, callback handlers, session management',
+            'Telegram Mini Apps (TWA) — full SPAs inside Telegram with initData authentication',
+            'NestJS backend with webhooks and polling; Angular admin panel for bot content management',
+            'Push broadcasts by user segments, voting, analytics',
+            'Python (FastAPI + Selenium) for workflow automation and data parsing',
+          ],
+        },
+        {
+          icon: '📊',
+          label: 'Analytics & Data Integration',
+          items: [
+            'Google Analytics 4 + GTM: event tracking, custom dimensions, conversion goals',
+            'Meta Conversion API + Pixel: server-side event sending to bypass adblockers',
+            'TikTok Events API: pixel + server-side tracking for ad campaigns',
+            'Keitaro Tracker: postbacks, conversion tracking, sub-accounts',
+            'Centralized data microservice: single entry collects events from all sources and distributes to platforms',
+          ],
+        },
+        {
+          icon: '📧',
+          label: 'Email Systems',
+          items: [
+            'Single sends: dynamic content, personalization via template engine (Handlebars / Mustache)',
+            'Email chains: delayed sends via NestJS scheduled tasks (BullMQ / cron), trigger-based activation',
+            'Multi-tenant templates: each project has its own set of branded templates',
+            'Email verification flow: code generation → validation → session confirmation',
+            'Brevo (Sendinblue) SMTP + API integration; fallback to own SMTP server',
+          ],
+        },
+        {
+          icon: '⚙️',
+          label: 'DevOps & Infrastructure',
+          items: [
+            'VPS/VDS setup from scratch: Ubuntu/Debian, SSH hardening, ufw firewall, fail2ban',
+            'Nginx: reverse proxy for multiple Node services, SSL termination, rate limiting, gzip',
+            'Docker Compose stacks: Node app + PostgreSQL + Redis + Nginx in one compose.yml',
+            'PM2: cluster mode for Node, auto-restart, log rotation, monitoring dashboard',
+            'CI/CD: GitHub Actions or scripts for automated build and deploy of SPA + API',
+            'Cloudflare: DNS management, DDoS protection, Workers, D1 SQLite database',
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: 'job2',
+    title: 'Frontend Developer',
+    period: 'Jan 2023 — Mar 2024',
+    company: 'Art-Pixel Studio · iFind · Techno-Bunker',
+    companyUrl: null,
+    companies: [
+      { name: 'Art-Pixel Studio', url: 'https://art-pixel.studio' },
+      { name: 'iFind',            url: 'https://find-iq.com'      },
+      { name: 'Techno-Bunker',    url: 'https://techno-bunker.com.ua' },
+    ],
+    sub: 'E-commerce / B2B portals · team of 20 · Full-time remote',
+    tags: [
+      { label: 'HTML/SCSS/JS', type: '' },
+      { label: 'OpenCart',     type: '' },
+      { label: 'WordPress',    type: '' },
+      { label: 'jQuery',       type: '' },
+      { label: 'MySQL',        type: '' },
+      { label: 'Joomla',       type: '' },
+      { label: 'PHP',          type: '' },
+    ],
+    bullets: [
+      'Developed responsive interfaces for OpenCart B2C/B2B marketplaces, cross-browser compatibility, WCAG',
+      'WordPress and Joomla customization: custom PHP functionality, themes, plugins',
+      '50+ commercial production projects: e-commerce, corporate websites, admin panels',
+    ],
+    detail: {
+      sections: [
+        {
+          icon: '🛒',
+          label: 'E-commerce (OpenCart)',
+          items: [
+            'B2C and B2B marketplaces on OpenCart: custom themes, extensions, system override',
+            'UI development for product catalogs, cart, checkout flow, personal account',
+            'Payment system integration: LiqPay, WayForPay, Fondy',
+            'SEO optimization: Schema.org microdata, sitemap, canonical URLs, page speed',
+            '10+ e-commerce projects: santan.ua, fishingmall.com.ua, techno-bunker.com.ua and others',
+          ],
+        },
+        {
+          icon: '🌐',
+          label: 'WordPress / CMS',
+          items: [
+            'Custom WordPress themes from scratch: custom post types, taxonomies, ACF, page builders',
+            'PHP functionality: custom hooks, shortcodes, REST API endpoints',
+            'Plugins: WooCommerce customization, Contact Form 7, WPML, Yoast SEO',
+            'Joomla CMS: template customization, extension development, database queries',
+          ],
+        },
+        {
+          icon: '💅',
+          label: 'Frontend Technologies',
+          items: [
+            'HTML5 / CSS3 / SCSS — BEM methodology, responsive layout, CSS Grid + Flexbox',
+            'JavaScript: jQuery, Vanilla JS — slider, modal, form validation, AJAX requests',
+            'UI libraries: Bootstrap 4/5, MaterializeUI, UIkit, Bulma',
+            'Animations: Swiper.js, Splide.js, Animate.js, ScrollReveal, AOS',
+            'Performance: lazy loading, image optimization, minification, CDN assets',
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: 'job3',
+    title: 'Frontend Developer',
+    period: 'Aug 2022 — Jan 2023',
+    company: 'ABMcloud IT-Solution',
+    companyUrl: 'https://abmcloud.com',
+    sub: 'Supply Chain Automation · 200+ employees · team of 11 · Full-time remote',
+    tags: [
+      { label: 'Angular',         type: 'hot' },
+      { label: 'Bootstrap',       type: ''    },
+      { label: 'Email Templates', type: ''    },
+      { label: 'SCSS',            type: ''    },
+      { label: 'Design System',   type: ''    },
+      { label: 'WCAG',            type: ''    },
+    ],
+    bullets: [
+      'Responsive landing pages for marketing campaigns, pixel-perfect UI',
+      'Email templates optimized for Gmail, Outlook, Apple Mail — fully responsive',
+      'Reusable Angular UI components for B2B platform, design system, accessibility (WCAG)',
+    ],
+    detail: {
+      sections: [
+        {
+          icon: '📐',
+          label: 'UI Components & Design System',
+          items: [
+            'Reusable Angular components for B2B e-commerce platform: tables, forms, filters, dashboards',
+            'Design system support: unified color, typography, spacing tokens; component documentation',
+            'Accessibility (WCAG 2.1 AA): aria-labels, keyboard navigation, color contrast',
+            'Bootstrap 4 + custom SCSS overlay — brand colors and typography without changing the core',
+          ],
+        },
+        {
+          icon: '📧',
+          label: 'Email Templates',
+          items: [
+            'Responsive HTML email templates for promotional and transactional sends',
+            'Tested and optimized for Gmail, Outlook 2016/2019, Apple Mail, Yahoo Mail',
+            'Inline CSS for maximum client compatibility; table-based layout where needed',
+            'Dynamic blocks via Liquid/Handlebars template engines for ESP platforms',
+          ],
+        },
+        {
+          icon: '🚀',
+          label: 'Landing Pages',
+          items: [
+            'Pixel-perfect responsive landings for marketing campaigns and events',
+            'Core Web Vitals optimization: LCP < 2.5s, CLS < 0.1, FID < 100ms',
+            'Swiper.js sliders, AOS scroll animations, ScrollReveal effects',
+            'Forms with validation and CRM integration (HubSpot, amoCRM)',
+          ],
+        },
+      ],
+    },
+  },
+]
