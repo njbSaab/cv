@@ -5,7 +5,7 @@ export const i18n = {
     // Header
     availableForHire: 'Available for hire · Kyiv, Ukraine · Remote OK',
     roleTitle:        'Fullstack / Frontend Engineer',
-    yearsExp:         '3.5+ years',
+    yearsExp:         '4+ years',
     commercialExp:    'commercial experience',
     primaryStack:     'Primary Stack',
     archPatterns:     'Architecture & Patterns',
@@ -22,7 +22,7 @@ export const i18n = {
     flowSteps: ['UI / UX', 'Frontend', 'Backend', 'Databases', 'DevOps', 'Production'],
     // Summary paragraph parts
     sum1: 'Fullstack developer with',
-    sum2: '3.5+ years of commercial experience',
+    sum2: '4+ years of commercial experience',
     sum3: '. Specialized in building',
     sum4: 'SPAs, PWAs, Telegram Mini Apps',
     sum5: ' for ',
@@ -120,7 +120,7 @@ export const i18n = {
     // Header
     availableForHire: 'Відкритий до роботи · Київ, Україна · Дистанційно',
     roleTitle:        'Fullstack / Frontend інженер',
-    yearsExp:         '3.5+ роки',
+    yearsExp:         '4+ роки',
     commercialExp:    'комерційного досвіду',
     primaryStack:     'Основний стек',
     archPatterns:     'Архітектура та патерни',
@@ -136,7 +136,7 @@ export const i18n = {
     flowSteps: ['UI / UX', 'Frontend', 'Backend', 'Бази даних', 'DevOps', 'Production'],
     // Summary paragraph
     sum1:  'Fullstack розробник з',
-    sum2:  '3.5+ роками комерційного досвіду',
+    sum2:  '4+ роками комерційного досвіду',
     sum3:  '. Спеціалізуюсь на розробці',
     sum4:  'SPA, PWA, Telegram Mini Apps',
     sum5:  ' для ',

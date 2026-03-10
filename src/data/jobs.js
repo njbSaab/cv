@@ -93,7 +93,7 @@ export const JOBS = [
     company: 'Art-Pixel Studio · iFind · Techno-Bunker',
     companyUrl: null,
     companies: [
-      { name: 'Art-Pixel Studio', url: 'https://art-pixel.studio' },
+      { name: 'Art-Pixel Shop', url: 'https://art-pixel.shop' },
       { name: 'iFind',            url: 'https://find-iq.com'      },
       { name: 'Techno-Bunker',    url: 'https://techno-bunker.com.ua' },
     ],

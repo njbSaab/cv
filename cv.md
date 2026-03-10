@@ -92,7 +92,7 @@ Najib Saab  Frontend WEB / Fullstack engineer
                         CodeWars: njbSaab
                    
 🧠 Summary
-👋 I’m a Full-Stack Web Developer with 3.5+ years of experience in building modern reactive applications — including SPAs, PWAs, CMSs, and Telegram Mini Apps.
+👋 I’m a Full-Stack Web Developer with 4+ years of experience in building modern reactive applications — including SPAs, PWAs, CMSs, and Telegram Mini Apps.
 Currently, I focus on full-stack application development, which involves designing and building both the client-side and admin panels integrated with a robust backend and SQL database. Additionally, I handle hosting, deployment, server configuration, API integration, and ongoing maintenance to ensure seamless and scalable solutions.
             Experience 👨🏻‍💻
                                                 Setup

@@ -100,6 +100,46 @@ export default function App() {
     localStorage.setItem('cv-lang', next)
   }
 
+  /* ── Pipeline animation ──────────────────────────────────
+     pipeStep: -1 = off-left | 0..N-1 = on track | N = off-right
+     Sequence: 0→1→…→N-1→N(off-right) → instant jump to -1(off-left) → 0→…
+  ────────────────────────────────────────────────────────── */
+  const [pipeStep,    setPipeStep   ] = useState(0)
+  const [pipeTransit, setPipeTransit] = useState(true)
+
+  useEffect(() => {
+    const N = FLOW_STEPS.length
+    const id = setInterval(() => {
+      setPipeStep(prev => {
+        if (prev === N) {
+          // Currently off-right — jump instantly to off-left, then re-enable
+          setPipeTransit(false)
+          requestAnimationFrame(() => {
+            setPipeStep(-1)
+            requestAnimationFrame(() => setPipeTransit(true))
+          })
+          return N           // hold until rAF resolves
+        }
+        return prev + 1      // advance: -1→0, 0→1, … N-1→N
+      })
+    }, 800)
+    return () => clearInterval(id)
+  }, [])
+
+  /* pipeline geometry helpers */
+  const P_N        = FLOW_STEPS.length
+  const P_TRACK_L  = 100 / P_N / 2          // 8.33%  — first circle center
+  const P_TRACK_R  = 100 - P_TRACK_L        // 91.67% — last circle center
+  const P_TOTAL    = P_TRACK_R - P_TRACK_L  // 83.33%
+  const P_SEG      = P_TOTAL / (P_N - 1)    // 16.67% per step
+  // pipeStep -1 → tail at -8.34% (off-left); N → tail at 108.33% (off-right)
+  const P_SEG_LEFT  = P_TRACK_L + pipeStep * P_SEG
+  const P_SEG_RIGHT = P_SEG_LEFT + P_SEG
+  const activeCircle = pipeStep >= 0 && pipeStep < P_N ? pipeStep : -1
+  const wormTransition = pipeTransit
+    ? 'left .62s cubic-bezier(.4,0,.2,1)'
+    : 'none'
+
   return (
     <>
       <style>{`
@@ -210,9 +250,10 @@ export default function App() {
                 <div key={num} style={{
                   flex: 1, textAlign: 'center',
                   fontFamily: "'DM Mono',monospace", fontSize: 9,
-                  color: i === FLOW_STEPS.length - 1 ? t.accent : t.muted,
-                  opacity: i === FLOW_STEPS.length - 1 ? 0.9 : 0.45,
+                  color: i === activeCircle ? t.accent : t.muted,
+                  opacity: i === activeCircle ? 1 : 0.4,
                   letterSpacing: '.06em',
+                  transition: 'color .3s, opacity .3s',
                 }}>
                   {num}
                 </div>
@@ -221,26 +262,53 @@ export default function App() {
 
             {/* ── Circles + connecting line ─ */}
             <div style={{ position: 'relative', display: 'flex', alignItems: 'center', marginBottom: 8 }}>
+              {/* Static dim track */}
               <div style={{
                 position: 'absolute',
-                left: `${100 / FLOW_STEPS.length / 2}%`,
-                right: `${100 / FLOW_STEPS.length / 2}%`,
+                left: `${P_TRACK_L}%`, right: `${P_TRACK_L}%`,
                 height: 2, top: '50%', transform: 'translateY(-50%)',
-                background: `linear-gradient(90deg, ${t.border} 0%, ${t.border} 55%, ${t.accent} 100%)`,
-                borderRadius: 2, zIndex: 0,
+                background: t.border, borderRadius: 2, zIndex: 0,
+              }} />
+              {/* Moving worm segment — both tail AND head slide together */}
+              <div style={{
+                position: 'absolute',
+                left: `${P_SEG_LEFT}%`,
+                width: `${P_SEG}%`,
+                height: 2, top: '50%', transform: 'translateY(-50%)',
+                background: `linear-gradient(90deg, transparent, rgba(${t.accent2Rgb},.6), ${t.accent2}, ${t.accent}, ${t.accent})`,
+                borderRadius: 2, zIndex: 1,
+                transition: pipeTransit ? 'left .62s cubic-bezier(.4,0,.2,1)' : 'none',
+              }} />
+              {/* Spark — rides the segment head */}
+              <div style={{
+                position: 'absolute',
+                left: `calc(${P_SEG_RIGHT}% - 5px)`,
+                top: '50%', transform: 'translateY(-50%)',
+                width: 10, height: 10, borderRadius: '50%',
+                background: t.accent,
+                boxShadow: `0 0 10px ${t.accent}, 0 0 22px rgba(${t.accentRgb},.6)`,
+                zIndex: 2,
+                transition: wormTransition,
               }} />
               {FLOW_STEPS.map(({ icon }, i) => {
-                const isLast = i === FLOW_STEPS.length - 1
+                const isActive = i === activeCircle
+                const isDone   = activeCircle >= 0 && i < activeCircle
                 const sz = isMobile ? 34 : 44
                 return (
-                  <div key={i} style={{ flex: 1, display: 'flex', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
+                  <div key={i} style={{ flex: 1, display: 'flex', justifyContent: 'center', position: 'relative', zIndex: 3 }}>
                     <div style={{
                       width: sz, height: sz, borderRadius: '50%',
-                      background: isLast ? `rgba(${t.accentRgb},.14)` : t.surface2,
-                      border: `2px solid ${isLast ? t.accent : t.border}`,
+                      background: isActive
+                        ? `rgba(${t.accentRgb},.18)`
+                        : isDone ? `rgba(${t.accentRgb},.07)` : t.surface2,
+                      border: `2px solid ${isActive || isDone ? t.accent : t.border}`,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontSize: isMobile ? 14 : 18,
-                      boxShadow: isLast ? `0 0 18px rgba(${t.accentRgb},.45), 0 0 0 5px rgba(${t.accentRgb},.08)` : 'none',
+                      boxShadow: isActive
+                        ? `0 0 22px rgba(${t.accentRgb},.65), 0 0 0 5px rgba(${t.accentRgb},.12)`
+                        : isDone ? `0 0 8px rgba(${t.accentRgb},.25)` : 'none',
+                      transform: isActive ? 'scale(1.2)' : 'scale(1)',
+                      transition: 'all .5s cubic-bezier(.4,0,.2,1)',
                     }}>
                       {icon}
                     </div>
@@ -252,14 +320,16 @@ export default function App() {
             {/* ── Step labels ───────────── */}
             <div style={{ display: 'flex', marginBottom: 22 }}>
               {FLOW_STEPS.map(({ }, i) => {
-                const isLast = i === FLOW_STEPS.length - 1
+                const isActive = i === activeCircle
+                const isDone   = activeCircle >= 0 && i < activeCircle
                 return (
                   <div key={i} style={{
                     flex: 1, textAlign: 'center',
                     fontFamily: "'DM Mono',monospace", fontSize: isMobile ? 8.5 : 10.5,
-                    color: isLast ? t.accent : t.muted,
-                    fontWeight: isLast ? 600 : 400,
+                    color: isActive ? t.accent : isDone ? `rgba(${t.accentRgb},.6)` : t.muted,
+                    fontWeight: isActive ? 600 : 400,
                     letterSpacing: '.02em',
+                    transition: 'color .3s',
                   }}>
                     {tr.flowSteps[i]}
                   </div>
@@ -280,10 +350,10 @@ export default function App() {
           </div>
 
           {/* ── Body ──────────────────────────────────────── */}
-          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 16 : 24, padding: isMobile ? '0 12px' : '0 24px 0', alignItems: 'flex-start' }}>
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 16 : 5, padding: isMobile ? '0 12px' : '0 24px', alignItems: 'flex-start' }}>
             <Sidebar t={t} tr={tr} isMobile={isMobile} isDrawerOpen={sidebarOpen} onDrawerClose={() => setSidebarOpen(false)} />
 
-            <main style={{ flex: 1, padding: isMobile ? '0 0 24px' : '8px 20px 32px 0', display: 'flex', flexDirection: 'column', gap: isMobile ? 28 : 36, overflow: 'hidden', width: isMobile ? '100%' : 'auto' }}>
+            <main style={{ flex: 1, padding: isMobile ? '0 0 24px' : '8px 0px 32px 10px', display: 'flex', flexDirection: 'column', gap: isMobile ? 28 : 36, overflow: 'hidden', width: isMobile ? '100%' : 'auto' }}>
 
               {/* Stats */}
               <div style={{
@@ -309,7 +379,7 @@ export default function App() {
               </div>
 
               {/* Work Experience */}
-              <div>
+              <div style={{ paddingLeft: 15 }}>
                 <SectionLabel t={t}>{tr.workExp}</SectionLabel>
                 {JOBS.map(job => <JobCard key={job.id} job={job} t={t} tr={tr} />)}
               </div>

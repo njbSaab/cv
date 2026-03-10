@@ -15,7 +15,7 @@ export function JobCard({ job, t, tr }) {
       <div
         ref={ref}
         style={{
-          position: 'relative', paddingLeft: 28, marginBottom: 34,
+          position: 'relative', paddingLeft: 15, marginBottom: 34,
           opacity:   inView ? 1 : 0,
           transform: inView ? 'none' : 'translateY(22px)',
           transition: 'opacity .55s ease, transform .55s ease',
@@ -26,13 +26,24 @@ export function JobCard({ job, t, tr }) {
           position: 'absolute', left: 0, top: 10, bottom: -22,
           width: 1,
           background: `linear-gradient(to bottom, ${t.accent}, ${t.border})`,
-        }} />
-        {/* Timeline dot */}
+          overflow: 'hidden',
+        }}>
+          {/* Drip — bright segment sliding down */}
+          <div style={{
+            position: 'absolute', left: 0, right: 0,
+            background: `linear-gradient(to bottom, transparent, ${t.accent}, rgba(${t.accentRgb},.3), transparent)`,
+            borderRadius: 1,
+            animation: `timelineDrip ${2.8 + (job.id === 'job2' ? .6 : job.id === 'job3' ? 1.2 : 0)}s ease-in infinite`,
+            animationDelay: job.id === 'job2' ? '.9s' : job.id === 'job3' ? '1.8s' : '0s',
+          }} />
+        </div>
+        {/* Timeline dot — pulse */}
         <div style={{
           position: 'absolute', left: -5, top: 8,
           width: 11, height: 11, borderRadius: '50%',
           background: t.accent,
-          boxShadow: `0 0 12px ${t.dotGlow}`,
+          animation: `timelineDot 2.4s ease-in-out infinite`,
+          animationDelay: job.id === 'job2' ? '.8s' : job.id === 'job3' ? '1.6s' : '0s',
         }} />
 
         {/* Header row */}
