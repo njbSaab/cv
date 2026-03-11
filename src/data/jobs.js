@@ -18,12 +18,12 @@ export const JOBS = [
       { label: 'Docker',      type: ''    },
     ],
     bullets: [
-      'Built SPA/PWA platforms (Angular + Vue) with NestJS backend (OOP + Clean Architecture, CQRS) and PostgreSQL/MySQL — from scratch to production deploy',
-      'Telegram bots and Mini Apps with admin panels; workflow automation and analytics pipeline',
-      'Registration/verification orchestrators across multiple servers and providers (betting APIs, FingerprintJS)',
-      'Email systems: single sends, delayed chains, dynamic templates, multi-tenant (Brevo / SMTP)',
-      'Integrated Google Analytics, GTM, Meta API, TikTok API, Keitaro into microservice architecture',
-      'VPS/VDS administration: Nginx, Docker, PM2, SSL, Cloudflare — configured from scratch',
+      'Admin panels on Angular (OOP + FSD) · client SPAs/PWAs on React — full product cycle from architecture to deploy',
+      'NestJS microservices: Clean Architecture, CQRS, DDD — REST API, queues (BullMQ), PostgreSQL/MySQL',
+      'Email microservices on Fastify: OTP verification, email chains (D+1/D+3/D+7), Brevo SMTP + fallback',
+      'HonoJS edge servers: REST API for admin back-channels, GraphQL + WebSocket for client apps',
+      'Telegram bots + Mini Apps with NestJS · orchestrators for multi-server registration/verification flows',
+      'VPS/VDS from scratch: Nginx, Docker Compose, PM2, SSL, Cloudflare · GA4, Meta API, Keitaro Tracker',
     ],
     detail: {
       sections: [
@@ -31,11 +31,11 @@ export const JOBS = [
           icon: '🧩',
           label: 'Full-Stack Web Development',
           items: [
-            'Angular SPAs with OOP + FSD (Feature-Sliced Design) — from architecture to production deploy',
-            'NestJS backend: OOP + Clean Architecture, CQRS, DDD elements. Layers: controllers → use-cases → repositories → domain entities',
-            'Full cycle: dynamic frontend UI → secure NestJS backend → admin panels → relational databases (PostgreSQL, MySQL)',
-            'High-load web platforms and client-facing tools: responsiveness, stability, user engagement',
-            'Vue 3 + Pinia for lighter SPAs where NgRx overhead is not justified',
+            'Admin panels — Angular (OOP + FSD): content management, email marketing, user tables, event editors, quiz systems, push notifications',
+            'Client apps — React SPA / PWA: user-facing platforms with auth, personal dashboard, real-time vote counters, responsive UI',
+            'Core microservices — NestJS (Clean Architecture, CQRS, DDD): REST API, business logic, relational DBs (PostgreSQL, MySQL), BullMQ queues',
+            'Email microservices — Fastify: OTP verification sends, email chain sequences (D+1/D+3/D+7), multi-provider SMTP (Brevo + fallback)',
+            'Edge & lightweight servers — HonoJS: REST API for admin back-channels, GraphQL endpoints, WebSocket real-time for client SPAs',
           ],
         },
         {

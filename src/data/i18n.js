@@ -35,7 +35,7 @@ export const i18n = {
     // Main sections
     workExp:          'Work Experience',
     keyProjects:      'Key Projects',
-    portfolioLabel:   'Portfolio · Live Projects',
+    portfolioLabel:   'Portfolio · Live Projects without NDA',
     coursesLabel:     'Courses & Self-education',
     ecommerceGroup:   '🛒 E-commerce — individual projects',
     sitesGroup:       '🌐 Sites & Corporate',
@@ -149,7 +149,7 @@ export const i18n = {
     // Main sections
     workExp:          'Досвід роботи',
     keyProjects:      'Ключові проекти',
-    portfolioLabel:   'Портфоліо · Живі проекти',
+    portfolioLabel:   'Портфоліо · Живі проекти без NDA',
     coursesLabel:     'Курси та самоосвіта',
     ecommerceGroup:   '🛒 Інтернет-магазини — окремі проекти',
     sitesGroup:       '🌐 Сайти та корпоративні',

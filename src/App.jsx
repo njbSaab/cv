@@ -347,6 +347,62 @@ export default function App() {
                 <strong style={{ color: t.text }}>{tr.sum10}</strong>{tr.sum11}
               </p>
             </div>
+
+            {/* ── AI Focus ──────────────────────────────── */}
+            <div style={{
+              marginTop: 18,
+              borderLeft: `3px solid rgba(${t.accent2Rgb},.4)`,
+              paddingLeft: 16,
+            }}>
+              {/* Title */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                <span style={{
+                  fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: 14,
+                  color: t.accent2,
+                }}>AI-focus</span>
+              </div>
+
+              {/* Description */}
+              <p style={{ fontSize: 13.5, color: t.muted, lineHeight: 1.75, marginBottom: 12 }}>
+                Developed <strong style={{ color: t.text }}>Python FastAPI</strong>-based backends / microservices that call external LLM APIs for real-time AI features (chat, generation, analysis).
+              </p>
+
+              {/* Tools grid */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+                {[
+                  {
+                    name: 'GroqAPI',
+                    color: t.accent,
+                    rgb: t.accentRgb,
+                    desc: 'Client app tool: fast content generation, low-latency chat completions — prompts, streaming, rate limiting.',
+                  },
+                  {
+                    name: 'CLI tools (Claude · Gemini · Qwen)',
+                    color: t.accent2,
+                    rgb: t.accent2Rgb,
+                    desc: 'Code gen & debugging (Claude Anthropic), long-context / image / PDF analysis (Gemini), multilingual coding experiments (Qwen).',
+                  },
+                  {
+                    name: 'OpenClaw.ai',
+                    color: t.chipReactText,
+                    rgb: t.reactRgb,
+                    desc: 'Self-hosted AI agent on server: task automation, local tools, file / email / calendar management, Telegram integration.',
+                  },
+                ].map(({ name, color, rgb, desc }) => (
+                  <div key={name} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '3px 0' }}>
+                    <div>
+                      <span style={{
+                        fontFamily: "'DM Mono',monospace", fontSize: 11.5,
+                        fontWeight: 600, color,
+                      }}>{name}</span>
+                      <span style={{ fontSize: 12.5, color: t.muted, marginLeft: 8, lineHeight: 1.6 }}>
+                        — {desc}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* ── Body ──────────────────────────────────────── */}
